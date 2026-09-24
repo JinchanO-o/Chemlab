@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chemistry Quiz</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/learning.css" />
+</head>
+<body>
+  <header class="site-header"><div class="site-header__inner"><div class="site-header__brand">Study Forum</div><div id="siteNavMount"></div></div></header>
+  <main class="container learning-page">
+    <header class="learning-header"><h1>Chemistry Quiz</h1><p>Practice chemistry at your own pace, with no timer.</p></header>
+    <section id="quizSetup" class="learning-card">
+      <div class="learning-form">
+        <label for="topicSelect">Topic<select id="topicSelect"><option value="mixed">Mixed</option><option value="element-symbols">Element symbols</option><option value="element-names">Element names</option><option value="atomic-structure">Atomic structure</option><option value="categories">Categories</option><option value="formulas">Formulas</option><option value="lab-safety">Lab safety</option><option value="lab-tools">Lab tools</option></select></label>
+        <label for="difficultySelect">Difficulty<select id="difficultySelect"><option value="all">All</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select></label>
+        <label for="questionCount">Questions<select id="questionCount"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="all">All</option></select></label>
+      </div>
+      <div class="learning-actions"><button id="startQuiz" class="button" type="button">Start quiz</button></div>
+    </section>
+    <section id="quizScreen" class="learning-card" hidden>
+      <div class="quiz-meta"><span id="quizTopic"></span><span id="quizProgressText"></span></div><div class="progress-track" aria-label="Quiz progress"><span id="quizProgressBar"></span></div>
+      <h2 id="quizQuestion" class="question-text"></h2><div id="quizAnswers" class="answer-list"></div><p id="quizExplanation" class="explanation" aria-live="polite" hidden></p><div class="learning-actions"><button id="quizNext" class="button" type="button" hidden>Next</button></div>
+    </section>
+    <section id="quizResult" class="learning-card" hidden><h2>Quiz complete</h2><div id="resultScore" class="result-score"></div><p id="resultPercentage" class="result-score"></p><h3>Topic breakdown</h3><ul id="topicBreakdown" class="breakdown-list"></ul><h3>Wrong answers</h3><ul id="wrongAnswers" class="wrong-list"></ul><div class="learning-actions"><button id="retryWrong" class="button" type="button">Retry wrong ones</button><button id="newQuiz" class="button secondary" type="button">New quiz</button></div></section>
+  </main>
+  <script type="module" src="js/main.js"></script><script type="module" src="js/quiz.js"></script>
+</body>
+</html>

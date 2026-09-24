@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Element Details</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/visualization.css" />
+</head>
+<body>
+  <header class="site-header"><div class="site-header__inner"><div class="site-header__brand">Study Forum</div><div id="siteNavMount"></div></div></header>
+  <main id="main-content" class="container visualization-page"><section id="elementDetails" class="calculator-card" aria-live="polite"><h1>Element Details</h1><p>Loading element...</p></section><section class="calculator-card"><h2>Discussion</h2><form id="commentForm" class="learning-form"><label for="commentBody">Comment<textarea id="commentBody" maxlength="2000" rows="4"></textarea></label><button class="button" type="submit">Post comment</button></form><p id="commentStatus" class="calc-result" aria-live="polite"></p><div id="commentsList" aria-live="polite"></div></section></main>
+  <script type="module" src="js/main.js"></script><script type="module" src="js/element.js"></script><script type="module" src="js/comments.js"></script>
+</body>
+</html>

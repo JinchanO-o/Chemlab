@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jinchano-o.github.io/The-study-forrum/sitemap.xml

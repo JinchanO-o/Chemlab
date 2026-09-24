@@ -1,218 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chemistry Experiment Tools</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      color: #333;
-    }
-
-    .title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 40px;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .black-frame {
-      background: white;
-      border: 8px solid #000;
-      border-radius: 20px;
-      padding: 40px;
-      max-width: 1200px;
-      width: 100%;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .section {
-      margin-bottom: 50px;
-    }
-
-    .section:last-child {
-      margin-bottom: 0;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 30px;
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #000;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .tool-card {
-      background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-      border: 3px solid #dee2e6;
-      border-radius: 16px;
-      padding: 25px 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.5s;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-8px) scale(1.05);
-      border-color: #000;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    }
-
-    .tool-card:hover::before {
-      left: 100%;
-    }
-
-    .tool-icon {
-      font-size: 4rem;
-      margin-bottom: 15px;
-      display: block;
-      color: #495057;
-    }
-
-    .tool-name {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 8px;
-    }
-
-    .tool-desc {
-      font-size: 0.95rem;
-      color: #6c757d;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 768px) {
-      .black-frame {
-        padding: 30px 20px;
-        margin: 10px;
-      }
-
-      .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-      }
-
-      .tool-icon {
-        font-size: 3rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1 class="title">Chemistry Experiment Tools</h1>
-  
-  <div class="black-frame">
-    <div class="section">
-      <h2 class="section-title">Main Tools</h2>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <span class="tool-icon">🧪</span>
-          <div class="tool-name">Beaker</div>
-          <div class="tool-desc">Cylindrical container for mixing and heating liquids</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🔬</span>
-          <div class="tool-name">Erlenmeyer Flask</div>
-          <div class="tool-desc">Conical flask for titrations and mixing solutions</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🧫</span>
-          <div class="tool-name">Test Tube</div>
-          <div class="tool-desc">Small tube for reactions and observations</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🫗</span>
-          <div class="tool-name">Flask</div>
-          <div class="tool-desc">Round-bottom flask for heating and distillation</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">💉</span>
-          <div class="tool-name">Pipette</div>
-          <div class="tool-desc">Precision tool for transferring small liquid volumes</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🧪</span>
-          <div class="tool-name">Buret</div>
-          <div class="tool-desc">Graduated tube for precise volume dispensing</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🧫</span>
-          <div class="tool-name">Volumetric Flask</div>
-          <div class="tool-desc">Accurate container for preparing solutions</div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chemistry Experiment Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/learning.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-header__brand">Study Forum</div>
+        <div id="siteNavMount"></div>
       </div>
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">Measuring Aids</h2>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <span class="tool-icon">📏</span>
-          <div class="tool-name">Graduated Cylinder</div>
-          <div class="tool-desc">Measures liquid volumes accurately</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🪵</span>
-          <div class="tool-name">Glass Rod</div>
-          <div class="tool-desc">Stirring rod for mixing solutions</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🕯️</span>
-          <div class="tool-name">Alcohol Lamp</div>
-          <div class="tool-desc">Heat source for small-scale heating</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">📦</span>
-          <div class="tool-name">Test Tube Rack</div>
-          <div class="tool-desc">Holds multiple test tubes securely</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+    </header>
+    <main class="container">
+      <section class="tools-page__header">
+        <h1 class="hero__title">Chemistry Experiment Tools</h1>
+      </section>
+      <section class="section">
+        <div id="toolsGrid" class="tools-grid" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer class="footer">Static chemistry reference materials for study and lab prep.</footer>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/tools.js"></script>
+  </body>
 </html>

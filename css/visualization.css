@@ -1,0 +1,23 @@
+.visualization-page { padding: 2rem 0 4rem; }
+.visualization-header { text-align: center; margin-bottom: 2rem; }
+.visualization-header p { color: var(--color-text-muted); }
+.chart-controls { display: flex; flex-wrap: wrap; gap: .75rem 1rem; margin-bottom: 1rem; }
+.chart-controls label { display: inline-flex; align-items: center; gap: .4rem; color: var(--color-text-muted); }
+.chart-grid { display: grid; gap: 1rem; }
+.chart-card { min-width: 0; padding: 1rem; border: 1px solid var(--color-border); border-radius: 1rem; background: var(--color-surface); box-shadow: 0 12px 24px var(--color-shadow); }
+.chart-card h2 { font-size: 1.05rem; }
+.chart-wrap { position: relative; min-height: 260px; }
+.molecule-layout { display: grid; gap: 1rem; }
+.molecule-sidebar, .molecule-main { padding: 1rem; border: 1px solid var(--color-border); border-radius: 1rem; background: var(--color-surface); }
+.molecule-search, .smiles-input { width: 100%; padding: .7rem .8rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--color-bg); color: var(--color-text); }
+.molecule-list { display: grid; gap: .4rem; max-height: 520px; overflow-y: auto; margin-top: .75rem; }
+.molecule-list button { padding: .65rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--color-bg); color: var(--color-text); text-align: left; }
+.molecule-list button:hover, .molecule-list button.is-selected { border-color: var(--color-primary); }
+.viewer-toolbar { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .75rem; }
+.viewer-toolbar select, .viewer-toolbar input { min-height: 2.5rem; padding: .5rem; border: 1px solid var(--color-border); border-radius: .5rem; background: var(--color-bg); color: var(--color-text); }
+.molecule-viewer { min-height: 420px; border: 1px solid var(--color-border); border-radius: .7rem; background: #101827; }
+.molecule-info { margin-top: 1rem; }
+.molecule-info p { color: var(--color-text-muted); }
+.viewer-fallback { display: grid; place-items: center; min-height: 420px; padding: 1rem; color: #fff; text-align: center; }
+.viewer-fallback svg { width: min(100%, 360px); height: 220px; }
+@media (min-width: 760px) { .chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .molecule-layout { grid-template-columns: minmax(220px, 280px) minmax(0, 1fr); align-items: start; } }

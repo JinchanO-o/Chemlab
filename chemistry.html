@@ -1,456 +1,82 @@
-xg<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Tuần Hoàn Hóa Học - Chemistry</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    :root {
-      --gray: hsl(0, 0%, 2%);
-      --white: #000000;
-      --blue: #0039f3;
-      --blue-light: #b9ffff;
-      --cian-glow: rgb(0, 255, 255);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--black);
-      color: var(--white);
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .title {
-      font-family: 'Pacifico', cursive;
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 900;
-      color: var(--red);
-      text-shadow: 0 0 30px var(--red-glow);
-      margin-bottom: 20px;
-    }
-
-    .intro-text {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      opacity: 0.95;
-    }
-
-    .periodic-container {
-      padding: 60px 20px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .periodic-title {
-      text-align: center;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      color: var(--red);
-      text-shadow: 0 0 20px var(--red-glow);
-      margin-bottom: 40px;
-    }
-
-    .periodic-table {
-      display: grid;
-      grid-template-columns: repeat(18, 1fr);
-      grid-template-rows: repeat(11, 1fr);
-      gap: 2px 4px;
-      max-width: 1200px;
-      margin: 0 auto;
-      min-height: 800px;
-    }
-
-    .f-block {
-      grid-row: 9 / 10;
-      grid-column: 4 / 18;
-    }
-
-    .actinides {
-      grid-row: 11 / 12;
-      grid-column: 4 / 18;
-    }
-
-    .element {
-      aspect-ratio: 1;
-      background: rgba(2, 2, 2, 0.377);
-      border: 2px solid var(--white);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-
-    .element:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 30px var(--red-glow);
-      border-color: var(--red);
-    }
-
-    .symbol {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--white);
-      margin-bottom: 1px;
-    }
-
-    .atomic-num {
-      font-size: 0.85rem;
-      color: rgba(0, 0, 0, 0.8);
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.342);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(5px);
-    }
-
-    .modal-content {
-      background: var(--black);
-      padding: 40px;
-      border-radius: 12px;
-      max-width: 90vw;
-      max-height: 90vh;
-      text-align: center;
-      border: 2px solid var(--red);
-      box-shadow: 0 0 60px var(--red-glow);
-      position: relative;
-      animation: modalSlideIn 0.3s ease;
-    }
-
-    @keyframes modalSlideIn {
-      from { opacity: 0; transform: scale(0.9) translateY(-20px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2.5rem;
-      cursor: pointer;
-      color: var(--red);
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    .close:hover {
-      color: var(--white);
-    }
-
-    .element-name {
-      font-size: 2.2rem;
-      color: var(--white);
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px var(--white);
-    }
-
-    .element-detail {
-      margin: 15px 0;
-      font-size: 1.2rem;
-      color: var(--white);
-    }
-
-    .element-detail strong {
-      color: var(--red);
-    }
-
-    @media (max-width: 768px) {
-      .title {
-        font-size: 2.8rem;
-      }
-      
-      .periodic-table {
-        grid-template-columns: repeat(9, 1fr);
-        gap: 3px;
-      }
-      
-      .modal-content {
-        margin: 20px;
-        padding: 30px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .periodic-table {
-        grid-template-columns: repeat(6, 1fr);
-      }
-    }
-  </style>
-</head>
-<body>
-  <section class="hero">
-    <h1 class="title">Chemistry</h1>
-    <p class="intro-text">
-      hãy cùng chúng tôi khám phá thế giới kỳ diệu của hóa học thông qua bảng tuần hoàn với 118 nguyên tố, nơi mỗi nguyên tố là một câu chuyện về vũ trụ và sự sống.
-  </section>
-
-  <section class="periodic-container">
-    <h2 class="periodic-title">Bảng Tuần Hoàn Hóa Học (118 Nguyên Tố)</h2>
-    <div class="periodic-table" id="periodicTable"></div>
-  </section>
-
-  <div id="elementModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 class="element-name" id="modalName"></h2>
-      <div class="element-detail">
-        <strong class="atomic-mass" id="modalMass"></strong>
-      </div>
-      <div class="element-detail">
-        <strong class="group" id="modalGroup"></strong>
-      </div>
-      <div class="element-detail">
-        <strong class="period" id="modalPeriod"></strong>
-      </div>
-    </div>
-  </div>c
-
-  <script src="js/main.js"></script>
-</body>
-</html>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chemistry Experiment Tools</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chemistry | ChemLab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/learning.css" />
+    <link rel="stylesheet" href="css/pwa.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      color: #333;
-    }
-
-    .title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 40px;
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .black-frame {
-      background: white;
-      border: 8px solid #000;
-      border-radius: 20px;
-      padding: 40px;
-      max-width: 1200px;
-      width: 100%;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .section {
-      margin-bottom: 50px;
-    }
-
-    .section:last-child {
-      margin-bottom: 0;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 30px;
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 3px solid #000;
-    }
-
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .tool-card {
-      background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-      border: 3px solid #dee2e6;
-      border-radius: 16px;
-      padding: 25px 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.5s;
-    }
-
-    .tool-card:hover {
-      transform: translateY(-8px) scale(1.05);
-      border-color: #000;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    }
-
-    .tool-card:hover::before {
-      left: 100%;
-    }
-
-    .tool-icon {
-      font-size: 4rem;
-      margin-bottom: 15px;
-      display: block;
-      color: #495057;
-    }
-
-    .tool-name {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 8px;
-    }
-
-    .tool-desc {
-      font-size: 0.95rem;
-      color: #6c757d;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 768px) {
-      .black-frame {
-        padding: 30px 20px;
-        margin: 10px;
-      }
-
-      .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-      }
-
-      .tool-icon {
-        font-size: 3rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1 class="title">Chemistry Experiment Tools</h1>
-  
-  <div class="black-frame">
-    <div class="section">
-      <h2 class="section-title">Main Tools</h2>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <span class="tool-icon">🧪</span>
-          <div class="tool-name">Beaker</div>
-          <div class="tool-desc">Cylindrical container for mixing and heating liquids</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🔬</span>
-          <div class="tool-name">Erlenmeyer Flask</div>
-          <div class="tool-desc">Conical flask for titrations and mixing solutions</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🧫</span>
-          <div class="tool-name">Test Tube</div>
-          <div class="tool-desc">Small tube for reactions and observations</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🫗</span>
-          <div class="tool-name">Flask</div>
-          <div class="tool-desc">Round-bottom flask for heating and distillation</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">💉</span>
-          <div class="tool-name">Pipette</div>
-          <div class="tool-desc">Precision tool for transferring small liquid volumes</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🧪</span>
-          <div class="tool-name">Buret</div>
-          <div class="tool-desc">Graduated tube for precise volume dispensing</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">🧫</span>
-          <div class="tool-name">Volumetric Flask</div>
-          <div class="tool-desc">Accurate container for preparing solutions</div>
-        </div>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="chemistry.html" aria-label="ChemLab home"><span aria-hidden="true">⚛</span><span>CHEMLAB</span></a>
+        <div id="siteNavMount" class="site-nav" aria-label="Primary navigation"></div>
+        <div class="site-header__actions"><button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button><button class="button secondary" type="button" aria-label="Open navigation menu">☰</button></div>
       </div>
-    </div>
+    </header>
 
-    <div class="section">
-      <h2 class="section-title">Measuring Aids</h2>
-      <div class="tools-grid">
-        <div class="tool-card">
-          <span class="tool-icon">📏</span>
-          <div class="tool-name">Graduated Cylinder</div>
-          <div class="tool-desc">Measures liquid volumes accurately</div>
+    <main id="main-content" class="home-page">
+      <section class="hero" aria-labelledby="chemistry-title">
+        <div class="hero__left">
+          <div class="hero__doodles" aria-hidden="true">
+            <svg class="doodle doodle--star doodle--tl" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" stroke="#1A1A1A" stroke-width="2" fill="none" /></svg>
+            <svg class="doodle doodle--sparkle doodle--tr" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke="#1A1A1A" stroke-width="2" fill="none" /></svg>
+            <svg class="doodle doodle--atom doodle--br" viewBox="0 0 80 80"><ellipse cx="40" cy="40" rx="31" ry="12" transform="rotate(25 40 40)" stroke="#1A1A1A" stroke-width="2" fill="none" /><ellipse cx="40" cy="40" rx="31" ry="12" transform="rotate(-25 40 40)" stroke="#1A1A1A" stroke-width="2" fill="none" /><circle cx="40" cy="40" r="5" stroke="#1A1A1A" stroke-width="2" fill="none" /></svg>
+          </div>
+          <span class="sticky-note">Small steps<br />Big discoveries</span>
+          <h1 id="chemistry-title" class="hero__title">Chemistry</h1>
+          <p class="hero__subtitle">Explore the remarkable world of chemistry through the periodic table, where each element reveals the building blocks of matter and life.</p>
         </div>
-        <div class="tool-card">
-          <span class="tool-icon">🪵</span>
-          <div class="tool-name">Glass Rod</div>
-          <div class="tool-desc">Stirring rod for mixing solutions</div>
+
+        <div class="hero__right">
+          <section id="progressDashboard" class="progress-card" aria-live="polite">
+            <div class="progress-card__header"><span aria-hidden="true">▥</span> Your Progress</div>
+            <div class="progress-grid">
+              <div class="progress-tile progress-tile--yellow"><span class="progress-tile__label">Elements learned</span><strong class="progress-tile__value">0</strong></div>
+              <div class="progress-tile progress-tile--purple"><span class="progress-tile__label">Overall progress</span><strong class="progress-tile__value">0%</strong></div>
+              <div class="progress-tile progress-tile--mint"><span class="progress-tile__label">Study days</span><strong class="progress-tile__value">0</strong></div>
+              <div class="progress-tile progress-tile--blue"><span class="progress-tile__label">Day streak</span><strong class="progress-tile__value">0</strong></div>
+            </div>
+          </section>
+          <aside class="today-card" aria-labelledby="today-title">
+            <div class="today-card__header"><span aria-hidden="true">☆</span><span id="today-title">Today's Element</span></div>
+            <div class="today-card__body"><div class="today-card__element-tile"><span>1</span><strong class="element__symbol">H</strong><span>Hydrogen</span></div><div class="today-card__info"><h2>Hydrogen</h2><div>Atomic number: 1</div><div>Atomic mass: 1.008 u</div><span class="today-card__badge">Nonmetal</span></div></div>
+            <div class="today-card__footer">Group 1&nbsp; | &nbsp;Period 1&nbsp; | &nbsp;Block s</div>
+          </aside>
         </div>
-        <div class="tool-card">
-          <span class="tool-icon">🕯️</span>
-          <div class="tool-name">Alcohol Lamp</div>
-          <div class="tool-desc">Heat source for small-scale heating</div>
-        </div>
-        <div class="tool-card">
-          <span class="tool-icon">📦</span>
-          <div class="tool-name">Test Tube Rack</div>
-          <div class="tool-desc">Holds multiple test tubes securely</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+      </section>
+
+      <section class="filter-bar" aria-label="Element search and filters">
+        <label class="sr-only" for="elementSearch">Search for an element</label><input id="elementSearch" class="filter-bar__search" type="search" placeholder="Search element..." autocomplete="off" />
+        <label class="sr-only" for="categoryFilter">Filter by category</label><select id="categoryFilter" class="filter-bar__select filter-bar__select--yellow"><option value="all">All Categories</option></select>
+        <label class="sr-only" for="periodFilter">Filter by period</label><select id="periodFilter" class="filter-bar__select filter-bar__select--purple"><option value="all">All Periods</option></select>
+        <label class="sr-only" for="blockFilter">Filter by block</label><select id="blockFilter" class="filter-bar__select filter-bar__select--mint"><option value="all">All Blocks</option><option value="s">s</option><option value="p">p</option><option value="d">d</option><option value="f">f</option></select>
+        <button id="resetFilters" class="filter-bar__reset" type="button">↺ Reset</button>
+      </section>
+
+      <section class="legend" aria-label="Periodic table legend">
+        <span class="legend__item"><i class="legend__dot legend__dot--alkali"></i>Alkali metal</span><span class="legend__item"><i class="legend__dot legend__dot--alkaline"></i>Alkaline earth metal</span><span class="legend__item"><i class="legend__dot legend__dot--transition"></i>Transition metal</span><span class="legend__item"><i class="legend__dot legend__dot--post"></i>Post-transition metal</span><span class="legend__item"><i class="legend__dot legend__dot--metalloid"></i>Metalloid</span><span class="legend__item"><i class="legend__dot legend__dot--nonmetal"></i>Nonmetal</span><span class="legend__item"><i class="legend__dot legend__dot--halogen"></i>Halogen</span><span class="legend__item"><i class="legend__dot legend__dot--noble"></i>Noble gas</span><span class="legend__item"><i class="legend__dot legend__dot--lanthanide"></i>Lanthanide</span><span class="legend__item"><i class="legend__dot legend__dot--actinide"></i>Actinide</span>
+      </section>
+
+      <section class="periodic-table" aria-labelledby="periodic-table-heading"><h2 id="periodic-table-heading" class="sr-only">Periodic Table of Elements</h2><div class="periodic-table__inner" id="periodicTable" aria-label="Periodic table of the elements"></div></section>
+    </main>
+
+    <footer class="site-footer">Static chemistry reference materials for study and lab prep.</footer>
+
+    <div id="elementModal" class="modal" aria-hidden="true"><div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modalName"><button class="modal__close" type="button" aria-label="Close modal">&times;</button><h2 class="element-name" id="modalName"></h2><div class="element-detail"><strong>Atomic number:</strong> <span id="modalNumber"></span></div><div class="element-detail"><strong>Atomic mass:</strong> <span id="modalMass"></span></div><div class="element-detail"><strong>Group:</strong> <span id="modalGroup"></span></div><div class="element-detail"><strong>Period:</strong> <span id="modalPeriod"></span></div><div class="element-detail"><strong>Category:</strong> <span id="modalCategory"></span></div></div></div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/periodic.js"></script>
+  </body>
 </html>

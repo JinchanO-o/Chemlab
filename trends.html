@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Chemistry Trends</title>
+  <link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/visualization.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+  <header class="site-header"><div class="site-header__inner"><div class="site-header__brand">Study Forum</div><div id="siteNavMount"></div></div></header>
+  <main class="container visualization-page"><header class="visualization-header"><h1>Chemistry Trends</h1><p>Explore how measurable properties change across the periodic table.</p></header>
+    <section class="chart-card"><h2>Category visibility</h2><div id="categoryControls" class="chart-controls"></div></section>
+    <section id="chartGrid" class="chart-grid" aria-live="polite"></section>
+  </main>
+  <script type="module" src="js/main.js"></script><script type="module" src="js/trends.js"></script>
+</body>
+</html>
