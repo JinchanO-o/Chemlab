@@ -1,0 +1,79 @@
+[
+  {
+    "id": "beaker",
+    "name": "Beaker",
+    "icon": "🧪",
+    "category": "Glassware",
+    "description": "A cylindrical container used for mixing, heating, and holding liquid samples."
+  },
+  {
+    "id": "erlenmeyer-flask",
+    "name": "Erlenmeyer Flask",
+    "icon": "🔬",
+    "category": "Glassware",
+    "description": "A conical flask useful for titrations, swirling, and mixing without excessive splashing."
+  },
+  {
+    "id": "test-tube",
+    "name": "Test Tube",
+    "icon": "🧫",
+    "category": "Glassware",
+    "description": "A small tube used for observing reactions in tiny quantities."
+  },
+  {
+    "id": "flask",
+    "name": "Round-bottom Flask",
+    "icon": "🫗",
+    "category": "Glassware",
+    "description": "A flask designed for heating and distillation due to its rounded bottom."
+  },
+  {
+    "id": "pipette",
+    "name": "Pipette",
+    "icon": "💉",
+    "category": "Measuring",
+    "description": "A precision tool for transferring small, accurate volumes of liquid."
+  },
+  {
+    "id": "buret",
+    "name": "Buret",
+    "icon": "📐",
+    "category": "Measuring",
+    "description": "A graduated tube used to deliver precise liquid volumes in titration experiments."
+  },
+  {
+    "id": "volumetric-flask",
+    "name": "Volumetric Flask",
+    "icon": "⚗️",
+    "category": "Measuring",
+    "description": "A flask calibrated for preparing solutions at an exact volume."
+  },
+  {
+    "id": "graduated-cylinder",
+    "name": "Graduated Cylinder",
+    "icon": "📏",
+    "category": "Measuring",
+    "description": "A tall container with volume markings used to measure liquid volume accurately."
+  },
+  {
+    "id": "glass-rod",
+    "name": "Glass Rod",
+    "icon": "🪵",
+    "category": "Support",
+    "description": "A stirring rod used to mix liquids or guide solutions without reacting with them."
+  },
+  {
+    "id": "alcohol-lamp",
+    "name": "Alcohol Lamp",
+    "icon": "🕯️",
+    "category": "Heating",
+    "description": "A small heat source commonly used for gentle heating in chemistry labs."
+  },
+  {
+    "id": "test-tube-rack",
+    "name": "Test Tube Rack",
+    "icon": "📦",
+    "category": "Support",
+    "description": "A rack for holding multiple test tubes upright and safely."
+  }
+]

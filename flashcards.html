@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Chemistry Flashcards</title>
+  <link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/learning.css" />
+</head>
+<body>
+  <header class="site-header"><div class="site-header__inner"><div class="site-header__brand">Study Forum</div><div id="siteNavMount"></div></div></header>
+  <main class="container learning-page"><header class="learning-header"><h1>Element Flashcards</h1><p>Flip, review, and mark elements you know.</p></header>
+    <section class="learning-card"><div class="learning-form"><label for="deckMode">Deck<select id="deckMode"><option value="all">All elements</option><option value="category">By category</option><option value="period">By period</option><option value="range">Custom range</option></select></label><label id="categoryChoice" for="deckCategory" hidden>Category<select id="deckCategory"></select></label><label id="periodChoice" for="deckPeriod" hidden>Period<select id="deckPeriod"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select></label><div id="rangeChoice" class="learning-form" hidden><label for="rangeStart">Start atomic number<input id="rangeStart" type="number" min="1" max="118" value="1"></label><label for="rangeEnd">End atomic number<input id="rangeEnd" type="number" min="1" max="118" value="118"></label></div></div>
+      <div class="quiz-meta"><span><span id="knownCount">0</span> known</span><span id="cardPosition">0 / 0</span></div><div class="progress-track"><span id="knownProgress" style="width:0%"></span></div>
+      <div class="flashcard-stage"><div id="flashcard" class="flashcard" role="button" tabindex="0" aria-label="Flip flashcard"><div class="flashcard-face"><div id="cardSymbol" class="flashcard-symbol"></div><div id="cardNumber"></div><div id="cardName" class="flashcard-name"></div></div><div class="flashcard-face flashcard-face--back"><dl class="flashcard-details"><div><dt>Atomic mass</dt><dd id="cardMass"></dd></div><div><dt>Category</dt><dd id="cardCategory"></dd></div><div><dt>Group</dt><dd id="cardGroup"></dd></div><div><dt>Period</dt><dd id="cardPeriod"></dd></div><div><dt>Electron configuration</dt><dd id="cardConfig"></dd></div><div><dt>Application</dt><dd id="cardApplication"></dd></div></dl></div></div></div>
+      <p id="flashcardError" class="empty-state" hidden>Unable to load flashcards.</p><div class="learning-actions"><button id="previousCard" class="button secondary" type="button">Previous</button><button id="flipCard" class="button" type="button">Flip</button><button id="nextCard" class="button secondary" type="button">Next</button><button id="shuffleDeck" class="button secondary" type="button">Shuffle</button><button id="markKnown" class="button" type="button">Mark as known</button></div>
+    </section>
+  </main><script type="module" src="js/main.js"></script><script type="module" src="js/flashcards.js"></script>
+</body></html>

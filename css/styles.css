@@ -1,0 +1,265 @@
+:root {
+  --bg: #050b1a;
+  --panel: rgba(15, 23, 42, 0.82);
+  --panel-border: rgba(148, 163, 184, 0.3);
+  --text: #e6eefc;
+  --muted: #b7c8eb;
+  --accent: #69d2ff;
+  --accent-2: #9f7aea;
+  --shadow: rgba(30, 41, 59, 0.5);
+  --element-bg: rgba(15, 23, 42, 0.95);
+  --alkali-metal: #f97316;
+  --alkaline-earth-metal: #fbbf24;
+  --transition-metal: #38bdf8;
+  --metalloid: #34d399;
+  --halogen: #f472b6;
+  --noble-gas: #a78bfa;
+  --lanthanide: #10b981;
+  --actinide: #2dd4bf;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #0d1b2a 0%, #050b1a 45%, #020611 100%);
+  color: var(--text);
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 8px;
+  text-align: center;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(105, 210, 255, 0.12);
+  border: 1px solid rgba(105, 210, 255, 0.45);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(105, 210, 255, 0.15);
+}
+
+.title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  text-shadow: 0 0 24px rgba(105, 210, 255, 0.3);
+}
+
+.intro-text {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.periodic-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 28px 18px 56px;
+}
+
+.periodic-title {
+  text-align: center;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  margin-bottom: 18px;
+}
+
+.table-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 18px;
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.table-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.alkaliMetal { background: var(--alkali-metal); }
+.alkalineEarthMetal { background: var(--alkaline-earth-metal); }
+.transitionMetal { background: var(--transition-metal); }
+.metalloid { background: var(--metalloid); }
+.halogen { background: var(--halogen); }
+.nobleGas { background: var(--noble-gas); }
+.lanthanide { background: var(--lanthanide); }
+.actinide { background: var(--actinide); }
+
+.periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(42px, 1fr));
+  grid-template-rows: repeat(11, minmax(48px, 1fr));
+  gap: 6px;
+  min-height: 760px;
+  padding: 16px;
+  background: rgba(8, 15, 30, 0.8);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  box-shadow: 0 28px 50px var(--shadow);
+}
+
+.element {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: var(--element-bg);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  text-align: center;
+  padding: 6px 4px;
+}
+
+.element:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 16px 22px rgba(15, 23, 42, 0.4);
+}
+
+.element .symbol {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.element .atomic-num {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  font-size: 0.62rem;
+  opacity: 0.8;
+}
+
+.element .name {
+  font-size: 0.52rem;
+  margin-top: 3px;
+  opacity: 0.9;
+}
+
+.element[data-category='alkali metal'] { background: rgba(249, 115, 22, 0.18); }
+.element[data-category='alkaline earth metal'] { background: rgba(251, 191, 36, 0.18); }
+.element[data-category='transition metal'] { background: rgba(56, 189, 248, 0.18); }
+.element[data-category='metalloid'] { background: rgba(52, 211, 153, 0.18); }
+.element[data-category='halogen'] { background: rgba(244, 114, 182, 0.18); }
+.element[data-category='noble gas'] { background: rgba(167, 139, 250, 0.18); }
+.element[data-category='lanthanide'] { background: rgba(16, 185, 129, 0.18); }
+.element[data-category='actinide'] { background: rgba(45, 212, 191, 0.18); }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 17, 0.76);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  width: min(540px, 92vw);
+  padding: 32px 28px 22px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.97), rgba(2, 6, 17, 0.97));
+  border: 1px solid rgba(105, 210, 255, 0.5);
+  border-radius: 18px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
+}
+
+.element-name {
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+}
+
+.element-detail {
+  margin: 10px 0;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.element-detail strong {
+  color: var(--text);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .periodic-table {
+    grid-template-columns: repeat(9, minmax(44px, 1fr));
+    grid-template-rows: auto;
+    min-height: unset;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    padding-top: 24px;
+  }
+
+  .periodic-table {
+    grid-template-columns: repeat(6, minmax(42px, 1fr));
+  }
+
+  .element {
+    min-height: 64px;
+  }
+}

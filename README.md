@@ -1,22 +1,31 @@
-# Chemistry.net
+# The Study Forum
 
-## Static Chemistry Educational Website
+Website học tập trực tuyến dành cho môn Hóa học và các công cụ hỗ trợ ôn luyện. Mục tiêu của web là giúp người học tiếp cận kiến thức hóa học một cách trực quan, dễ hiểu và chủ động hơn qua các bài tập, bảng tuần hoàn, flashcards và công cụ tính toán.
 
-### Features
-- Interactive Periodic Table
-- Element details modal
-- Responsive design
-- Hero with 'Chemistry' left, intro text below
+## Công dụng chính
+- Xem thông tin chi tiết về nguyên tố và phân tử
+- Tương tác với bảng tuần hoàn hóa học
+- Học qua flashcards và bài quiz
+- Sử dụng các công cụ hỗ trợ như máy tính hóa học, công thức, thống kê tiến độ
+- Lưu tiến độ học tập và hỗ trợ trải nghiệm offline
 
-### Run Locally
-Open `index.html` in browser:
+## Chạy locally
+Mở trực tiếp file `index.html` trong trình duyệt, hoặc chạy một máy chủ đơn giản:
+
+```bash
+python -m http.server 8000
 ```
-start index.html
+
+Sau đó truy cập vào:
+
+```text
+http://localhost:8000
 ```
 
-### Deploy
-- Netlify/Vercel: Drag folder
-- Custom domain: chemistry.net (configure DNS)
+## Công nghệ
+- HTML
+- CSS
+- JavaScript
+- Progressive Web App (PWA)
 
-Built with HTML/CSS/JS.
-
+Website này phù hợp cho việc tự học, ôn tập và rèn luyện kiến thức hóa học theo từng chủ đề.

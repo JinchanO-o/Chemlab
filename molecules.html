@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>3D Molecules</title>
+  <link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/layout.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/visualization.css" />
+  <script src="https://cdn.jsdelivr.net/npm/3dmol@2/build/3Dmol-min.js"></script>
+</head>
+<body>
+  <header class="site-header"><div class="site-header__inner"><div class="site-header__brand">Study Forum</div><div id="siteNavMount"></div></div></header>
+  <main class="container visualization-page"><header class="visualization-header"><h1>3D Molecules</h1><p>Inspect common molecules and experiment with their visual styles.</p></header>
+    <div class="molecule-layout"><aside class="molecule-sidebar"><label for="moleculeSearch">Search molecules</label><input id="moleculeSearch" class="molecule-search" type="search" autocomplete="off"><div id="moleculeList" class="molecule-list" aria-live="polite"></div></aside>
+      <section class="molecule-main"><div class="viewer-toolbar"><label for="styleSelect">Style<select id="styleSelect"><option value="stick">Stick</option><option value="sphere">Sphere</option><option value="line">Line</option><option value="ball">Ball and stick</option></select></label><button id="spinToggle" class="button secondary" type="button">Spin</button><button id="resetCamera" class="button secondary" type="button">Reset camera</button></div><form id="smilesForm" class="viewer-toolbar"><label for="smilesInput">SMILES<input id="smilesInput" class="smiles-input" placeholder="Try c1ccccc1"></label><button class="button" type="submit">Render</button></form><div id="moleculeViewer" class="molecule-viewer" role="img" aria-label="Interactive molecular structure"></div><div id="moleculeInfo" class="molecule-info" aria-live="polite"></div></section>
+    </div>
+  </main>
+  <script type="module" src="js/main.js"></script><script type="module" src="js/molecules.js"></script>
+</body>
+</html>
